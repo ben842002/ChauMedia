@@ -6,6 +6,8 @@ import { CheckCircle } from '@mui/icons-material';
 import { demoThumbnailUrl, demoVideoUrl, demoVideoTitle, demoChannelTitle, demoChannelUrl } from '../utils/constants';
 
 const VideoCard = ({ video: { id: { videoId }, snippet } }) => {
+    let stringCutOffLimit = 60;
+
     return (
         <Card sx={{ width: { md: "320px", xs: "100%" }, boxShadow: "none", borderRadius: 0 }}>
             <Link to={videoId ? `/video/${videoId}` : demoVideoUrl }>
@@ -21,14 +23,16 @@ const VideoCard = ({ video: { id: { videoId }, snippet } }) => {
                 {/* Title */}
                 <Link to={videoId ? `/video/${videoId}` : demoVideoUrl }>
                     <Typography variant="subtitle1" fontWeight="bold" color="#fff" lineHeight={1.5}>
-                        {snippet?.title.slice(0, 60) || demoVideoTitle.slice(0, 60)}
+                        {snippet?.title.length > stringCutOffLimit ? 
+                            (snippet?.title.slice(0, stringCutOffLimit) || demoVideoTitle.slice(0, stringCutOffLimit)) + "..." : snippet?.title
+                        }
                     </Typography>
                 </Link>
 
                 {/* Channel */}
                 <Link to={snippet?.channelId ? `/channel/${snippet?.channelId}` : demoChannelUrl }>
                     <Typography variant="subtitle2" fontWeight="bold" color="#bababa">
-                        {snippet?.channelTitle.slice(0, 60) || demoChannelTitle.slice(0, 60)}
+                        {snippet?.channelTitle.slice(0, stringCutOffLimit) || demoChannelTitle.slice(0, stringCutOffLimit)}
                         <CheckCircle sx={{ fontSize: 12, color: "gray", ml: "5px" }} />
                     </Typography>
                 </Link>
