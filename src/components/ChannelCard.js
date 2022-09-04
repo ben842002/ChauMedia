@@ -25,7 +25,7 @@ const ChannelCard = ({ channelDetail, marginTop }) => (
                 <CardMedia 
                     image={channelDetail?.snippet?.thumbnails?.high?.url || demoProfilePicture}
                     alt={channelDetail?.snippet?.title}
-                    sx={{ borderRadius: "50%", height: "180px", width: "180px", mb: 2, border: "1px solid #e3e3e3" }}
+                    sx={{ borderRadius: "50%", height: "180px", width: "180px", mb: 2, border: "3px solid #e3e3e3" }}
                 />
                 
                 <Typography variant="h6">
@@ -33,6 +33,7 @@ const ChannelCard = ({ channelDetail, marginTop }) => (
                     <CheckCircle sx={{ fontSize: 14, color: "gray", ml: "5px" }} />
                 </Typography>
 
+                {/* this only appears when this component is created in ChannelDetail.js */}
                 {channelDetail?.statistics?.subscriberCount && (
                     <Typography>
                         {parseInt(channelDetail?.statistics?.subscriberCount).toLocaleString()} Subscribers
