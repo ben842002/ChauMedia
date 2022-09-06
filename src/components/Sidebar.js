@@ -11,7 +11,6 @@ const Sidebar = ({ selectedCategory, setSelectedCategory }) => (
             flexDirection: { md: 'column' },
         }}    
     >
-        {/* display category buttons */}
         {categories.map((category) => (
             <button 
                 className="category-btn"
@@ -29,7 +28,6 @@ const Sidebar = ({ selectedCategory, setSelectedCategory }) => (
                 <span style={{ opacity: category.name === selectedCategory ? '1' : '0.8' }}> 
                     {category.name}
                 </span>
-
             </button>
         ))}
     </Stack>
