@@ -11,9 +11,11 @@ const VideoCard = ({ video: { id: { videoId }, snippet } }) => {
     
     if (!snippet?.title) return "Loading...";
     
-    // some titles appear with the ASCII value of an apostrophe
+    // some characters in titles are ASCII values
     let videoTitle = snippet?.title;
     videoTitle = videoTitle.replace(/&#39;/g, "'");
+    videoTitle = videoTitle.replace(/&quot;/g, '"');
+    videoTitle = videoTitle.replace(/&amp;/g, "&");
 
     return (
         <Card sx={{ width: { xs: "100%", sm: "358px", md: "320px" }, boxShadow: "none", borderRadius: 0 }}>
