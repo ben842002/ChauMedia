@@ -27,7 +27,7 @@ const VideoDetail = () => {
     <Box minHeight="95vh">
       <Stack direction={{ xs: "column", md: "row" }}>
         <Box flex={1}>
-          <Box sx={{ width: "100%", position: "sticky", top: "85px" }}>
+          <Box sx={{ width: "100%", top: "85px" }}>
             <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className="react-player" controls />
 
             <Typography color="#fff" variant="h5" fontWeight="bold" p={2} pb={0.5}>
@@ -51,9 +51,10 @@ const VideoDetail = () => {
                   {parseInt(likeCount).toLocaleString()} likes
                 </Typography>
               </Stack>
+
             </Stack>
 
-            <Typography variant="subtitle2" fontSize="12px" color="#808080" mt={0.5} p={2} pt={0}>
+            <Typography variant="subtitle2" fontSize="13px" color="#808080" mt={0.5} p={2} pt={0}>
               {description.length > 500 ? description.slice(0, 500) + "..." : description }
             </Typography>
             
